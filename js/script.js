@@ -1,3 +1,4 @@
+
 const DATA = [
     { nombre: "Laura", apellidos: "García Pérez", password: "12345678", telefono: "600111222", email: "laura@example.com", sexo: "Mujer" },
     { nombre: "Carlos", apellidos: "Martínez López", password: "12345678", telefono: "600333444", email: "carlos@example.com", sexo: "Hombre" },
