@@ -24,7 +24,7 @@
     <main>
         <h2>Introduce tus datos</h2>
 
-        <form action="tabla.html" method="get">
+        <form action="./ws/models/interfaces/crearUsuario.php" method="POST">
 
             <fieldset>
                 <legend>Datos personales</legend>
@@ -38,25 +38,25 @@
                 <p>
                     <label for="apellidos">Apellidos:</label>
                     <input type="text" id="apellidos" name="apellidos"
-                           placeholder="Tus apellidos" required>
+                           placeholder="Tus apellidos" >
                 </p>
 
                 <p>
                     <label for="password">Contraseña:</label>
-                    <input type="password" id="password" name="password"
-                           minlength="6" required>
+                    <input type="password" id="" name="password"
+                           minlength="6" >
                 </p>
 
                 <p>
                     <label for="telefono">Teléfono:</label>
                     <input type="tel" id="telefono" name="telefono"
-                           pattern="[0-9]{9}" placeholder="600000000" required>
+                           pattern="[0-9]{9}" placeholder="600000000" >
                 </p>
 
                 <p>
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email"
-                           placeholder="correo@ejemplo.com" required>
+                           placeholder="correo@ejemplo.com" >
                 </p>
 
                 <p>Sexo:</p>
