@@ -1,3 +1,0 @@
-{"nombre":"asf","apellidos":"asdfa","telefono":"654147897","email":"xx@x.com","sexo":"hombre","acciones":""}
-{"nombre":"asf","apellidos":"asdfa","telefono":"654147897","email":"xx@x.com","sexo":"hombre","acciones":""}
-{"nombre":"asf","apellidos":"asdfa","telefono":"654147897","email":"xx@x.com","sexo":"hombre","acciones":""}
