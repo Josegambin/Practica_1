@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Tabla de datos</title>
 </head>
+
 <body>
 
     <header>
@@ -23,57 +25,28 @@
 
     <main>
         <h2>Usuarios registrados</h2>
+        <label for="">Buscar</label>
+        <input type="text" id="search" size="40">
+        <br />
+        <br />
 
-        <table border="1" cellpadding="8" cellspacing="0">
-            <caption>Datos de los usuarios (sin contraseña)</caption>
-
+        <table border="1" cellpadding="8" cellspacing="0"
+            style="background-color: black; color: white;">
             <thead>
                 <tr>
                     <th>Nombre</th>
                     <th>Apellidos</th>
+                    <th>Password</th>
                     <th>Teléfono</th>
                     <th>Email</th>
                     <th>Sexo</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
-
-            <tbody>
-                <tr>
-                    <td>Laura</td>
-                    <td>García Pérez</td>
-                    <td>600111222</td>
-                    <td>laura@example.com</td>
-                    <td>Mujer</td>
-                </tr>
-                <tr>
-                    <td>Carlos</td>
-                    <td>Martínez López</td>
-                    <td>600333444</td>
-                    <td>carlos@example.com</td>
-                    <td>Hombre</td>
-                </tr>
-                <tr>
-                    <td>Ana</td>
-                    <td>Ruiz Sánchez</td>
-                    <td>600555666</td>
-                    <td>ana@example.com</td>
-                    <td>Mujer</td>
-                </tr>
-                <tr>
-                    <td>David</td>
-                    <td>Fernández Gil</td>
-                    <td>600777888</td>
-                    <td>david@example.com</td>
-                    <td>Hombre</td>
-                </tr>
-            </tbody>
-
-            <tfoot>
-                <tr>
-                    <td colspan="5">Total de usuarios: 4</td>
-                </tr>
-            </tfoot>
+            <tbody></tbody>
         </table>
+
+        <script type="module" src="./js/script.js"></script>
     </main>
 
     <footer>
@@ -82,4 +55,5 @@
     </footer>
 
 </body>
+
 </html>
