@@ -14,7 +14,7 @@ $acciones = $_POST['acciones']  ?? '';
 
 $user = new User($nombre, $apellidos, $telefono, $email, $sexo, $acciones);
 
-$rutaFichero = __DIR__ . '/usuarios.txt';
+$rutaFichero = __DIR__ . '/../usuarios.txt';
 $linea = $user->toJson();
 
 if (file_put_contents($rutaFichero, $linea, FILE_APPEND | LOCK_EX) === false) {

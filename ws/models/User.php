@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/interfaces/IToJson.php';
+require_once './interfaces/IToJson.php';
 
 class User implements IToJson
 {
