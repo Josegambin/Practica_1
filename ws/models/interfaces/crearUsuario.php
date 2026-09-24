@@ -9,7 +9,7 @@ $apellidos  = $_POST['apellidos']  ?? '';
 $password  = $_POST['password']  ?? '';
 $email  = $_POST['email']  ?? '';
 $telefono  = $_POST['telefono']  ?? '';
-$sexo = $_POST['sexo'] ?? ''; 
+$sexo = $_POST['sexo'] ?? '';
 $acciones = $_POST['acciones']  ?? '';
 
 $user = new User($nombre, $apellidos, $telefono, $email, $sexo, $acciones);
@@ -24,5 +24,3 @@ if (file_put_contents($rutaFichero, $linea, FILE_APPEND | LOCK_EX) === false) {
 }
 
 echo $user->toJson();
-
-
