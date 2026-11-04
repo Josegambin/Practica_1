@@ -1,24 +1,46 @@
 <?php
 
-require_once './interfaces/IToJson.php';
+
+
+require_once __DIR__ . '/../interfaces/IToJson.php';
 
 class User implements IToJson
 {
-    public $nombre;
-    public $apellidos;
-    public $telefono;
-    public $email;
-    public $sexo;
-    public $acciones;
+    private ?int $id;
+    private string $nombre;
+    private string $apellidos;
+    private string $telefono;
+    private string $email;
+    private string $sexo;
+    private string $password;
 
-    public function __construct($nombre, $apellidos, $telefono, $email, $sexo, $acciones)
+    public function __construct(
+            ?int $id,
+            string $nombre, 
+            string $apellidos,
+            string $telefono,
+            string $email,
+            string $sexo,
+            string $password
+        ){
+            $this->id = $id; 
+            $this->nombre = $nombre;
+            $this->apellidos = $apellidos;
+            $this->telefono = $telefono;
+            $this->email = $email;
+            $this->sexo = $sexo;
+            $this->password = $password;
+    }
+
+    public function getId(): ?int
     {
-        $this->nombre = $nombre;
-        $this->apellidos = $apellidos;
-        $this->telefono = $telefono;
-        $this->email = $email;
-        $this->sexo = $sexo;
-        $this->acciones = $acciones;
+        return $this->id;
+    }
+
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+        return $this;
     }
 
     public function getNombre()
@@ -76,19 +98,31 @@ class User implements IToJson
         return $this;
     }
 
-    public function getAcciones()
+    public function getPassword(): string
     {
-        return $this->acciones;
+        return $this->password;
     }
 
-    public function setAcciones($acciones)
+    public function setPassword(string $passwordHash): self
     {
-        $this->acciones = $acciones;
+        $this->password = $passwordHash;
         return $this;
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'id'        => $this->id,
+            'nombre'    => $this->nombre,
+            'apellidos' => $this->apellidos,
+            'telefono'  => $this->telefono,
+            'email'     => $this->email,
+            'sexo'      => $this->sexo,
+        ];
     }
 
     public function toJson(): string
     {
-        return json_encode($this) . PHP_EOL;
+        return json_encode($this->toArray(), JSON_UNESCAPED_UNICODE);
     }
 }
