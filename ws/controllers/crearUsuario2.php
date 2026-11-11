@@ -16,9 +16,10 @@ try
             'password' => $_POST['password'] ?? '',
             'email' => $_POST['email'] ?? '',
             'telefono' => $_POST['telefono'] ?? '',
-            'sexo' => $_POST['sexo'] ?? '',
-        ];
+            'sexo' => $_POST['sexo'] ?? ''
+    ];
 
+    $repository = new UserRepository();
     if ($datos['nombre'] === '' || $datos['password'] === '') {
         http_response_code(400);
         echo JsonResponse::response(false, 'El nombre y la contraseña son obligatorios', null);
@@ -42,7 +43,7 @@ try
         password_hash($datos['password'], PASSWORD_DEFAULT)
     );
 
-    $repository = new UserRepository();
+
     $user->setId($repository->insert($user));
 
     http_response_code(201);

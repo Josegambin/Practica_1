@@ -1,11 +1,14 @@
 <?php
 require_once __DIR__ . '/../models/User.php';
 
-class Utiles{
+class Utiles
+{
 
- public static function datosPublicosFilter(): ?int
+    public static function datosPublicosFilter(): ?int
     {
-    $id = filter_var($_GET['id'] ?? null, FILTER_VALIDATE_INT);
+        $origen ??= $_GET;
+        //Si id no existe o no es un entero positivo, devolvemos null y no el error Undefined array key.
+        $id = filter_var($origen['id'] ?? null, FILTER_VALIDATE_INT);
 
         if ($id === false || $id <= 0) {
             return null;
@@ -14,12 +17,12 @@ class Utiles{
         return $id;
     }
 
-public static function datosPublicos(User $usuario): array
+    public static function datosPublicos(User $usuario): array
     {
         $datos = $usuario->toArray();
+        // Eliminamos el id del array de datos públicos.
         unset($datos['id']);
 
         return $datos;
     }
-} 
-
+}

@@ -12,7 +12,7 @@ $telefono  = $_POST['telefono']  ?? '';
 $sexo = $_POST['sexo'] ?? '';
 $acciones = $_POST['acciones']  ?? '';
 
-$user = new User($nombre, $apellidos, $telefono, $email, $sexo, $acciones);
+$user = new User($nombre, $apellidos, $telefono, $email, $sexo, $password, $acciones);
 
 $rutaFichero = __DIR__ . '/../usuarios.txt';
 $linea = $user->toJson();

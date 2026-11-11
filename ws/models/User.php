@@ -13,6 +13,8 @@ class User implements IToJson
     private string $email;
     private string $sexo;
     private string $password;
+    private string $fechaNacimiento;
+
 
     public function __construct(
             ?int $id,
@@ -21,8 +23,10 @@ class User implements IToJson
             string $telefono,
             string $email,
             string $sexo,
-            string $password
-        ){
+            string $password,
+            string $fechaNacimiento = ''
+
+    ){
             $this->id = $id; 
             $this->nombre = $nombre;
             $this->apellidos = $apellidos;
@@ -30,6 +34,18 @@ class User implements IToJson
             $this->email = $email;
             $this->sexo = $sexo;
             $this->password = $password;
+            $this->fechaNacimiento = $fechaNacimiento;
+    }
+
+    public function getFechaNacimiento(): string
+    {
+        return $this->fechaNacimiento;
+    }
+
+    public function setFechaNacimiento(string $fecha): self
+    {
+        $this->fechaNacimiento = $fecha;
+        return $this;
     }
 
     public function getId(): ?int
@@ -48,7 +64,7 @@ class User implements IToJson
         return $this->nombre;
     }
 
-    public function setNombre($nombre)
+    public function setNombre(string $nombre)
     {
         $this->nombre = $nombre;
         return $this;
@@ -59,7 +75,7 @@ class User implements IToJson
         return $this->apellidos;
     }
 
-    public function setApellidos($apellidos)
+    public function setApellidos(string $apellidos)
     {
         $this->apellidos = $apellidos;
         return $this;
@@ -70,7 +86,7 @@ class User implements IToJson
         return $this->telefono;
     }
 
-    public function setTelefono($telefono)
+    public function setTelefono(string $telefono)
     {
         $this->telefono = $telefono;
         return $this;
@@ -81,7 +97,7 @@ class User implements IToJson
         return $this->email;
     }
 
-    public function setEmail($email)
+    public function setEmail(string $email)
     {
         $this->email = $email;
         return $this;
@@ -92,7 +108,7 @@ class User implements IToJson
         return $this->sexo;
     }
 
-    public function setSexo($sexo)
+    public function setSexo(string $sexo)
     {
         $this->sexo = $sexo;
         return $this;
@@ -118,6 +134,7 @@ class User implements IToJson
             'telefono'  => $this->telefono,
             'email'     => $this->email,
             'sexo'      => $this->sexo,
+            'fechaNacimiento' => $this->fechaNacimiento
         ];
     }
 

@@ -6,7 +6,6 @@ require_once __DIR__ . '/../utiles/datosPublicos.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
-
 try {
     $repository = new UserRepository();
 
