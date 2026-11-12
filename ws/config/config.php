@@ -4,4 +4,4 @@ define ('HOST', 'localhost');
 define ('USER', 'root');
 define ('PASS', '');
 define ('NAME', 'colegio');
-define ('CHARSET', 'utf8');
+define ('CHARSET', 'utf8mb4');

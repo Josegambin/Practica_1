@@ -27,7 +27,7 @@ $usuarios = $repository->findAll();
         <hr>
         <nav>
             <ul>
-                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../../public/index.html">Inicio</a></li>
                 <li><a href="../../public/html/formulario.html">Formulario</a></li>
                 <li><a href="../../ws/views/tabla.php">Tabla de datos</a></li>
                 <li><a href="../../public/html/galeria.html">Galería</a></li>
@@ -83,7 +83,7 @@ $usuarios = $repository->findAll();
         <hr>
         <p><small>2026 - Jose Manuel Gambin Manresa</small></p>
     </footer>
-    <script src="../../js/acciones.js"></script>
+    <script src="../../public/js/acciones.js"></script>
 </body>
 
 </html>

@@ -17,8 +17,13 @@ class Conexion
             );
 
             $options = [
+                // Lanza una excepción (PDOException) si una consulta falla.
+                // Sin esto, los errores pasarían en silencio.
                 PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+                // Por defecto, fetch() devuelve arrays con nombres de columna (no con índices numéricos).
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                // Usa sentencias preparadas reales de MySQL, no emuladas en PHP.
+                // Es más seguro frente a inyección SQL.
                 PDO::ATTR_EMULATE_PREPARES   => false,
             ];
 
