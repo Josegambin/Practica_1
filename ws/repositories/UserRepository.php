@@ -18,7 +18,7 @@ class UserRepository
         $stmt = $this->db->query('SELECT * FROM alumno ORDER BY id');
         $filas = $stmt->fetchAll();
 
-        return array_map(fn (array $fila): User => $this->hydrate($fila), $filas);
+        return array_map(fn(array $fila): User => $this->hydrate($fila), $filas);
     }
 
     public function findById(int $id): ?User
@@ -33,11 +33,15 @@ class UserRepository
 
     public function insert(User $usuario): int
     {
-        $sql = 'INSERT INTO alumno (nombre, apellidos, telefono, email, sexo, password)
-                VALUES (:nombre, :apellidos, :telefono, :email, :sexo, :password)';
+        $sql = "INSERT INTO alumno (nombre, apellidos, telefono, email, sexo, password, fecha_nacimiento)
+            VALUES (:nombre, :apellidos, :telefono, :email, :sexo, :password, :fecha_nacimiento)";
+
+        $parametros = $this->parametros($usuario) + [
+            ':fecha_nacimiento' => $usuario->getfecha_nacimiento(),
+        ];
 
         $stmt = $this->db->prepare($sql);
-        $stmt->execute($this->parametros($usuario));
+        $stmt->execute($parametros);
 
         return (int) $this->db->lastInsertId();
     }
@@ -45,11 +49,15 @@ class UserRepository
     public function update(User $usuario): bool
     {
         $sql = 'UPDATE alumno
-                SET nombre = :nombre, apellidos = :apellidos, telefono = :telefono,
-                    email = :email, sexo = :sexo, password = :password
-                WHERE id = :id';
+            SET nombre = :nombre, apellidos = :apellidos, telefono = :telefono,
+                email = :email, sexo = :sexo, password = :password,
+                fecha_nacimiento = :fecha_nacimiento
+            WHERE id = :id';
 
-        $parametros = $this->parametros($usuario) + [':id' => $usuario->getId()];
+        $parametros = $this->parametros($usuario) + [
+            ':fecha_nacimiento' => $usuario->getfecha_nacimiento(),
+            ':id'               => $usuario->getId(),
+        ];
 
         $stmt = $this->db->prepare($sql);
         $stmt->execute($parametros);
@@ -74,6 +82,7 @@ class UserRepository
             ':email'     => $usuario->getEmail(),
             ':sexo'      => $usuario->getSexo(),
             ':password'  => $usuario->getPassword(),
+            ':fecha_nacimiento' => $usuario->getfecha_nacimiento()
         ];
     }
 
@@ -86,7 +95,8 @@ class UserRepository
             (string) $fila['telefono'],
             (string) $fila['email'],
             (string) $fila['sexo'],
-            (string) $fila['password']
+            (string) $fila['password'],
+            (string) $fila['fecha_nacimiento']
         );
     }
 }

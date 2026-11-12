@@ -13,38 +13,38 @@ class User implements IToJson
     private string $email;
     private string $sexo;
     private string $password;
-    private string $fechaNacimiento;
+    private string $fecha_nacimiento;
 
 
     public function __construct(
-            ?int $id,
-            string $nombre, 
-            string $apellidos,
-            string $telefono,
-            string $email,
-            string $sexo,
-            string $password,
-            string $fechaNacimiento = ''
+        ?int $id,
+        string $nombre,
+        string $apellidos,
+        string $telefono,
+        string $email,
+        string $sexo,
+        string $password,
+        string $fecha_nacimiento = ''
 
-    ){
-            $this->id = $id; 
-            $this->nombre = $nombre;
-            $this->apellidos = $apellidos;
-            $this->telefono = $telefono;
-            $this->email = $email;
-            $this->sexo = $sexo;
-            $this->password = $password;
-            $this->fechaNacimiento = $fechaNacimiento;
+    ) {
+        $this->id = $id;
+        $this->nombre = $nombre;
+        $this->apellidos = $apellidos;
+        $this->telefono = $telefono;
+        $this->email = $email;
+        $this->sexo = $sexo;
+        $this->password = $password;
+        $this->fecha_nacimiento = $fecha_nacimiento;
     }
 
-    public function getFechaNacimiento(): string
+    public function getfecha_nacimiento(): string
     {
-        return $this->fechaNacimiento;
+        return $this->fecha_nacimiento;
     }
 
-    public function setFechaNacimiento(string $fecha): self
+    public function setfecha_nacimiento(string $fecha): self
     {
-        $this->fechaNacimiento = $fecha;
+        $this->fecha_nacimiento = $fecha;
         return $this;
     }
 
@@ -134,7 +134,7 @@ class User implements IToJson
             'telefono'  => $this->telefono,
             'email'     => $this->email,
             'sexo'      => $this->sexo,
-            'fechaNacimiento' => $this->fechaNacimiento
+            'fecha_nacimiento' => $this->fecha_nacimiento
         ];
     }
 
