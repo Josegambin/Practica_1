@@ -5,31 +5,28 @@ require_once __DIR__ . '/../response/JsonResponse.php';
 require_once __DIR__ . '/../repositories/UserRepository.php';
 require_once __DIR__ . '/../utiles/UserValidator.php';
 require_once __DIR__ . '/../utiles/PasswordValidator.php';
+require_once __DIR__ . '/../utiles/datosPublicos.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
 try {
     $repository = new UserRepository();
 
-    $id = (int) ($_POST['id'] ?? 0);
-    $usuario = $id > 0 ? $repository->findById($id) : null;
+    // El id llega por GET
+    $id = Utiles::datosPublicosFilter();
+    if ($id === null) {
+        http_response_code(400);
+        echo JsonResponse::response(false, 'El id no es válido', null);
+        exit;
+    }
+
+    $usuario = $repository->findById($id);
     if ($usuario === null) {
         http_response_code(404);
         echo JsonResponse::response(false, 'Usuario no encontrado', null);
         exit;
     }
 
-    // La BD guarda AAAA-MM-DD; la convertimos a DD-MM-AAAA para validarla igual que la entrada
-    // $fechaActual = '';
-    // $fechaBD = $usuario->getfecha_nacimiento();
-    // if ($fechaBD !== '') {
-    //     $dt = DateTimeImmutable::createFromFormat('!Y-m-d', substr($fechaBD, 0, 10));
-    //     if ($dt !== false) {
-    //         $fechaActual = $dt->format('d-m-Y');
-    //     }
-    // }
-
-    // Valores actuales
     $datos = [
         'nombre'           => $usuario->getNombre(),
         'apellidos'        => $usuario->getApellidos(),

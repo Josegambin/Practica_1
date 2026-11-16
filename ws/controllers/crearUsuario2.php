@@ -20,15 +20,19 @@ try {
         'fecha_nacimiento' => $_POST['fecha_nacimiento'] ?? ''
     ];
 
+    $error = UserValidator::validar($datos);
+    if ($error === null) {
+        $error = PasswordValidator::validar($datos['password']);
+    }
 
-    $error = UserValidator::validar($datos) ?? PasswordValidator::validar($datos['password']);
     if ($error !== null) {
         http_response_code(400);
-        echo JsonResponse::response(false, $error, $datos);
+        // No se devuelven los datos de entrada: contienen la contraseña en texto plano.
+        echo JsonResponse::response(false, $error, null);
         exit;
     }
 
-    // La entrada llega como DD-MM-AAAA; la BD guarda AAAA-MM-DD
+    // Llega como DD-MM-AAAA y la BD guarda AAAA-MM-DD
     $fechaBD = DateTimeImmutable::createFromFormat('!d-m-Y', $datos['fecha_nacimiento'])->format('Y-m-d');
 
     $repository = new UserRepository();
@@ -52,5 +56,5 @@ try {
 } catch (Throwable $e) {
     error_log($e->getMessage());
     http_response_code(500);
-    echo json_encode(['error' => 'Error interno del servidor']);
+    echo JsonResponse::response(false, 'Error interno del servidor', null);
 }

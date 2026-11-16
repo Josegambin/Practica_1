@@ -95,7 +95,6 @@ class UserRepository
             (string) $fila['telefono'],
             (string) $fila['email'],
             (string) $fila['sexo'],
-            (string) $fila['password'],
             (string) $fila['fecha_nacimiento']
         );
     }

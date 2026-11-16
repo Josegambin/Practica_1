@@ -3,14 +3,9 @@
 class PasswordValidator
 {
     private const MIN_CARACTERES = 8;
-    // password_hash() con bcrypt ignora todo lo que haya a partir de 72 bytes.
     private const MAX_BYTES = 72;
 
-    /**
-     * Valida la contraseña en texto plano, antes de hashearla.
-     * Devuelve null si es válida, o un mensaje de error.
-     * No se usa trim(): los espacios forman parte de la contraseña.
-     */
+    // Validamos el password a String
     public static function validar(mixed $password): ?string
     {
         if (!is_string($password)) {
@@ -21,6 +16,7 @@ class PasswordValidator
             return 'La contraseña debe tener al menos 8 caracteres';
         }
 
+        //Compureba el hash del password en bytes
         if (strlen($password) > self::MAX_BYTES) {
             return 'La contraseña no puede superar 72 bytes';
         }
